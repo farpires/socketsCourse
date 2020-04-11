@@ -14,6 +14,18 @@ var html = data.map(function(message, index){
     </div>
     `);
 }).join(' ');
+var div_msg =document.getElementById('messages');
+div_msg.innerHTML = html;
+div_msg.scrollTop = div_msg.scrollHeight;
+}
 
-document.getElementById('messages').innerHTML = html;
+function addMenssage(e){
+var message = {
+    nickname: document.getElementById('nickname').Value,
+    text: document.getElementById('text').value,
+};
+document.getElementById('nickname').style.display = 'none',
+socket.emit('add-message', message);
+
+return false;
 }

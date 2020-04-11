@@ -19,7 +19,13 @@ var messages = [{
 //on METDOD nos permite lansar eventos
 io.on('connection', function(socket){
 console.log("El cliente con Ip:"+socket.handshake.address+"se ha conectado...")
-socket.emit('messages',messages)
+socket.emit('messages',messages);
+//cauando llo reciba un mesnaje tengo que recoger iguardar y emitila a todos los clientes.
+socket.on('add-message',function(data){
+    messages.push(data);
+    io.sockets.emit('messages',messages);
+});
+
 });
 
 
